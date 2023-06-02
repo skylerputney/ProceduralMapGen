@@ -13,8 +13,8 @@ public class MeshGenerator : MonoBehaviour
     private Vector2[] uv;
     private Color[] colors;
     [SerializeField] private Gradient gradient;
-    [SerializeField] private int xSize = 20;
-    [SerializeField] private int zSize = 20;
+    [SerializeField] private int xSize = 20; //mapWidth
+    [SerializeField] private int zSize = 20; //mapHeight
     [SerializeField] private int minHeight = 0;
     [SerializeField] private int maxHeight = 100  ;
     [SerializeField] private float amplitude = .45f;
