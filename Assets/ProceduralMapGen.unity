@@ -539,7 +539,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2804c996458bfc44f943b8444eb5b353, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -578,7 +578,7 @@ Transform:
   m_GameObject: {fileID: 1662750417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.747428, y: -12.222772, z: 14.201196}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 64, y: 1, z: 64}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -614,7 +614,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb675734ce48184381cf76d7c6b8372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noiseScale: 0
+  drawMode: 1
+  mapWidth: 64
+  mapHeight: 64
+  seed: 3
+  noiseScale: 14.76
+  octaves: 3
+  persistance: 0.64
+  lacunarity: 2.4
+  autoUpdateMap: 1
+  terrainTypes:
+  - name: Water
+    height: 0.3
+    color: {r: 0.058250275, g: 0.16744588, b: 0.7264151, a: 0}
+  - name: Sand
+    height: 0.4
+    color: {r: 0.63483316, g: 0.6603774, b: 0.4579032, a: 0}
+  - name: Land
+    height: 0.7
+    color: {r: 0.09104663, g: 0.6226415, b: 0.26692587, a: 0}
+  - name: Mountain
+    height: 0.9
+    color: {r: 0.26521894, g: 0.3773585, b: 0.36276355, a: 0}
+  - name: MountainTop
+    height: 1
+    color: {r: 0.75226945, g: 0.990566, b: 0.96503425, a: 0}
 --- !u!4 &1909868208
 Transform:
   m_ObjectHideFlags: 0
