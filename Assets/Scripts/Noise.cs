@@ -18,15 +18,12 @@ public static class Noise
             scale = 0.0001f;
         }
 
-        for (int y = 0; y < mapHeight; y++)
-        {
-            for (int x = 0; x < mapWidth; x++)
-            {
+        for (int y = 0; y < mapHeight; y++){
+            for (int x = 0; x < mapWidth; x++){
                 float amplitude = 1;
                 float frequency = 1;  //Higher frequency -> Further apart sample points -> Height values change more rapidly
                 float noiseHeight = 0;
-                for(int i = 0; i < numberOctaves; i++)
-                {
+                for(int i = 0; i < numberOctaves; i++){
                     float sampleX = (x - halfWidth) / scale * frequency + octaveOffsets[i].x * frequency; //halfWidth makes Scale zoom in/out of center rather than upper right corner
                     float sampleY = (y - halfHeight) / scale * frequency + octaveOffsets[i].y * frequency;
 
