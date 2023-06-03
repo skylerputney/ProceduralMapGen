@@ -49,22 +49,22 @@ public class MeshData {
 
     public MeshData(Vector2Int meshSize) {
         this.meshSize = meshSize;
-        vertices = new Vector3[(meshSize.x + 1) * (meshSize.y + 1)]; //need 1 more vertex than shape #
+        vertices = new Vector3[(meshSize.x) * (meshSize.y)]; //need 1 more vertex than numb of tiles
         uv = new Vector2[vertices.Length]; //1 uv per vertex
-        triangles = new int[meshSize.x * meshSize.y * 6]; //2 triangles per square, 3 points per triangles -> 6, populating surface area of x * z squares
+        triangles = new int[(meshSize.x - 1) * (meshSize.y - 1) * 6]; //2 triangles per square, 3 points per triangles -> 6, populating surface area of x * z squares
         halfHeight = (meshSize.y - 1) / 2f;
         halfWidth = (meshSize.x - 1) / 2f;
     }
 
     private void GenerateTriangles() {
-        for (int y = 0, vertexNum = 0, triangleNum = 0; y < meshSize.y; y++) {
-            for (int x = 0; x < meshSize.x; x++, vertexNum++) {
-                triangles[triangleNum++] = 0 + vertexNum;
+        for (int y = 0, vertexNum = 0, triangleNum = 0; y < meshSize.y - 1; y++) {
+            for (int x = 0; x < meshSize.x - 1; x++, vertexNum++) {
+                triangles[triangleNum++] = vertexNum;
+                triangles[triangleNum++] = meshSize.x + vertexNum; //+1
+                triangles[triangleNum++] = 1 + vertexNum + meshSize.x; //-meshSize.x
+                triangles[triangleNum++] = vertexNum; //+1
                 triangles[triangleNum++] = meshSize.x + 1 + vertexNum;
-                triangles[triangleNum++] = 1 + vertexNum;
-                triangles[triangleNum++] = 1 + vertexNum;
-                triangles[triangleNum++] = meshSize.x + 1 + vertexNum;
-                triangles[triangleNum++] = meshSize.x + 2 + vertexNum;
+                triangles[triangleNum++] = 1 + vertexNum;//+1 + meshSize.x
             }
             vertexNum++; //prevents triangle being created linking new row diagonally to other end of old row
         }
@@ -90,7 +90,7 @@ public class MeshData {
         int vertexIndex = 0;
         for(int y = 0; y < meshSize.y; y++) {
             for(int x = 0; x < meshSize.x; x++, vertexIndex++) {
-                uv[vertexIndex] = new Vector2((float) x / meshSize.x, (float) y / meshSize.y); //uv values are on a scale from 0-1
+                uv[vertexIndex] = new Vector2(1f - (float) x / meshSize.x,1f - (float) y / meshSize.y); //uv values are on a scale from 0-1 // 1f - * properly rotates mesh to align w/ underlying colormap
             }
         }
     }
